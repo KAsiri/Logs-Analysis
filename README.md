@@ -1,6 +1,6 @@
 
 ## Logs Analysis Project
-    a reporting tool that prints out reports (in plain text) based on the data in the database. This reporting tool is a Python program using the psycopg2 module to connect to the database.
+a reporting tool that prints out reports (in plain text) based on the data in the database. This reporting tool is a Python program using the psycopg2 module to connect to the database.
 
 ## Project Requirements:-
 - Project follows good SQL coding practices: Each question should be answered with a single database query.  
