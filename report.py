@@ -1,5 +1,5 @@
-#!/usr/bin/env python2
-# Logs-Analysis project
+#!/usr/bin/env python
+# # Logs-Analysis project
 
 import psycopg2
 
@@ -7,7 +7,10 @@ import psycopg2
 
 
 def query_db(request):
-    conn = psycopg2.connect(database="news")
+    try:
+        conn = psycopg2.connect(database="news")
+    except:
+        print ("Unable to connect to the database")
     cursor = conn.cursor()
     cursor.execute(request)
     results = cursor.fetchall()
@@ -43,7 +46,7 @@ query2 = """Select authors.name, count(*) as counter
             order by counter desc;"""
 
 rows = query_db(query2)
-print ("\n\t" + "Who are the most popular article authors of all time? " + "\n")
+print ("\n\t"+"Who are the most popular article authors of all time?"+"\n")
 
 for row in rows:
     print(" {} -- {} views".format(row[0], row[1]))
@@ -55,7 +58,7 @@ query3 = """Select time, FaliedPercentage
             where FaliedPercentage > 1;"""
 
 rows = query_db(query3)
-print ("\n\t" + "On which days did more than 1% of requests lead to errors? " + "\n")
+print("\n\t"+"On which days did more than 1% of requests lead to errors?"+"\n")
 
 for row in rows:
     print("""  {0:%B %d,%Y} -- {1:.2f}% errors\n""".format(row[0], row[1]))
